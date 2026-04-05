@@ -2,6 +2,7 @@ from rpi_hardware_pwm import HardwarePWM
 from purepursuit import pure_pursuit
 from drivetrain import drive
 from imu import *
+from gps import *
 from constants import *
 import json
 import time
@@ -36,6 +37,10 @@ class Robot:
         self.imu = IMU()
         self.imu.calibrate()
 
+        # =============== GPS ====================
+        self.gps = GPSFix()
+        gps.setup()
+        
         # =============== BOT STATE ====================
         # trajectory is in translated utm coordinates
         self.trajectory = load_trajectory("trajectories/test.json")
