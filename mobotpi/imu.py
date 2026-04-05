@@ -40,7 +40,7 @@ class IMU:
 
         # Estimate roll and pitch from gravity direction
         roll = math.atan2(ay, az)
-        pitch = math.atan2(-ax, math.sqrt(ay * ay + az * az))
+        pitch = math.atan2(ax, math.sqrt(ay * ay + az * az))
         print(f"Roll: {roll:.2f}, Pitch: {pitch:.2f}")
 
         # Tilt compensation: rotate mag vector back to horizontal plane
@@ -53,6 +53,7 @@ class IMU:
 
         # East = 0 rad if x is east and y is north in your chosen frame
         heading = math.atan2(my_h, mx_h)
+        heading += math.pi/2
         return self._wrap_pi(heading)
 
     def get_heading_deg(self) -> float:
@@ -105,7 +106,7 @@ class IMU:
 
 
 if __name__ == "__main__":
-    imu = IMU(mag_offsets=(-2.7749999999999986, -19.724999999999998, 35.775))
+    imu = IMU(mag_offsets=(-3.3000000000000007, -21.375, 32.175))
 
 
     # (-2.7749999999999986, -19.724999999999998, 35.775)
