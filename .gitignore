@@ -6,3 +6,4 @@ buggybuggycomms/lib/RadioHead-master/.DS_Store
 **/.pio
 **/*.zip
 *.code-workspace
+.venv
