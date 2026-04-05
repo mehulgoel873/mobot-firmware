@@ -3,6 +3,8 @@ import math
 import board
 import adafruit_icm20x
 
+from constants import *
+
 class IMU:
     def __init__(self, mag_offsets=(0.0, 0.0, 0.0)):
         self.i2c = board.I2C()
@@ -12,15 +14,6 @@ class IMU:
         self.mag_offset_x = mag_offsets[0]
         self.mag_offset_y = mag_offsets[1]
         self.mag_offset_z = mag_offsets[2]
-
-    @staticmethod
-    def _wrap_pi(angle: float) -> float:
-        """Wrap angle to [-pi, pi]."""
-        while angle > math.pi:
-            angle -= 2.0 * math.pi
-        while angle < -math.pi:
-            angle += 2.0 * math.pi
-        return angle
 
     def get_heading(self) -> float:
         """
@@ -54,7 +47,7 @@ class IMU:
         # East = 0 rad if x is east and y is north in your chosen frame
         heading = math.atan2(my_h, mx_h)
         heading += math.pi/2
-        return self._wrap_pi(heading)
+        return normalize_angle(heading)
 
     def get_heading_deg(self) -> float:
         return math.degrees(self.get_heading())

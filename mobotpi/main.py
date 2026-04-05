@@ -4,6 +4,7 @@ from drivetrain import drive
 from imu import *
 from constants import *
 import json
+import time
 
 def load_trajectory(filepath: str) -> list[tuple[float, float]]:
     """
@@ -43,6 +44,7 @@ class Robot:
         self.y = 0 
         self.heading = 0
         self.v = 0
+        self.time = time.time()
 
 
     def loop(self):
