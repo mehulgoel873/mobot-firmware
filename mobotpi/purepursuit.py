@@ -1,9 +1,5 @@
 import math 
-
-def distance(p1: tuple[float, float], p2: tuple[float, float]) -> float:
-    """Euclidean distance between two 2D points."""
-    return math.hypot(p2[0] - p1[0], p2[1] - p1[1])
- 
+from constants import *
  
 def circle_line_intersection(
     center: tuple[float, float],
@@ -54,11 +50,6 @@ def point_on_segment(
         seg_start[0] + t * (seg_end[0] - seg_start[0]),
         seg_start[1] + t * (seg_end[1] - seg_start[1]),
     )
- 
- 
-def normalize_angle(angle: float) -> float:
-    """Wrap an angle to [-pi, pi]."""
-    return (angle + math.pi) % (2 * math.pi) - math.pi
  
  
 # ── Lookahead search ───────────────────────────────────────────────────────
