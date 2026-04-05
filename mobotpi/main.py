@@ -1,4 +1,6 @@
 from rpi_hardware_pwm import HardwarePWM
+from purepursuit import pure_pursuit
+from drivetrain import drive
 
 class Robot:
     def __init__(self):
