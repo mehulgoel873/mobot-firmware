@@ -30,7 +30,7 @@ def latlon_to_xy(
     METERS_PER_DEG_LAT = 111_320
     meters_per_deg_lon = 111_320 * math.cos(math.radians(ORIGIN_LAT))
 
-    x = (lon - ORIGIN_LAT) * meters_per_deg_lon
-    y = (lat - ORIGIN_LON) * METERS_PER_DEG_LAT
+    x = (lon - ORIGIN_LON) * meters_per_deg_lon
+    y = (lat - ORIGIN_LAT) * METERS_PER_DEG_LAT
 
     return (x, y)

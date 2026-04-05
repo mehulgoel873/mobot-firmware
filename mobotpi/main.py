@@ -20,7 +20,7 @@ def load_trajectory(filepath: str) -> list[tuple[float, float]]:
     origin_lon = waypoints[0]["lon"]
 
     return [
-        latlon_to_xy(wp["lat"], wp["lon"], origin_lat, origin_lon)
+        latlon_to_xy(wp["lat"], wp["lon"])
         for wp in waypoints
     ]
 
@@ -39,7 +39,7 @@ class Robot:
 
         # =============== GPS ====================
         self.gps = GPSFix()
-        gps.setup()
+        self.gps.setup()
         
         # =============== BOT STATE ====================
         # trajectory is in translated utm coordinates
