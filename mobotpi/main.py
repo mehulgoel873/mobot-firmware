@@ -85,6 +85,13 @@ class Robot:
         self.right_pwm.stop()
 
 
+if __name__ == "__main__":
+    bot = Robot()
 
+    bot.__init__()
+
+    while True:
+        bot.loop()
+        sleep(0.1)
 
 
