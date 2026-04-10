@@ -48,8 +48,8 @@ class Robot:
         self.x = 0
         self.y = 0 
         self.heading = 0
-        self.v = 0
-        self.time = time.time()
+        self.v = CHASSIS_SPEED
+        # self.time = time.time()
 
 
     def loop(self):
@@ -63,8 +63,23 @@ class Robot:
         self.drive(desired_omega)
 
     def update_state(self):
+        # old_x = self.x
+        # old_y = self.y
+        # old_time = self.time
+
+        # update location
+        self.gps.read_gps()
+        self.x, self.y = latlon_to_xy(self.gps.lat, self.gps.lon)
+
+        # update heading
         self.heading = self.imu.get_heading()
 
+        # # update time
+        # self.time = time.time()
+        
+        # # update velocity
+        # self.v = math.sqrt((self.x - old_x) ** 2 + (self.y - old_y) ** 2)/ (self.time - old_time)
+        
     def stop(self):
         self.left_pwm.stop()
         self.right_pwm.stop()
