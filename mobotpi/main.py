@@ -92,6 +92,6 @@ if __name__ == "__main__":
 
     while True:
         bot.loop()
-        sleep(0.1)
+        sleep(0.01)
 
 
